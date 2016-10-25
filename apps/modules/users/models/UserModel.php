@@ -1,5 +1,5 @@
 <?php
-namespace apps\models;
+namespace apps\modules\users\models;
 
 /**
  * Description of UserModel
