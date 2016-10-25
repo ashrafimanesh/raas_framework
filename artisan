@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+echo "\nwrite command:\n\n";
+
+require_once 'console.php';
+
+exit(0);
+
