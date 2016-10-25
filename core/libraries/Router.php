@@ -10,13 +10,13 @@ class Router{
         }
         
         $arr=  explode('@', $controller);
-        if(file_exists(APPPATH.$arr[0].'.php'))
+        if(file_exists(PROJECTSPATH.$arr[0].'.php')){
+            //load projects(special app)
+            require_once PROJECTSPATH.$arr[0].'.php';
+        }
+        else if(file_exists(MODULESPATH.$arr[0].'.php'))
         {
             //load general app
-            require_once APPPATH.$arr[0].'.php';
-        }
-        else if(file_exists(MODULESPATH.$arr[0].'.php')){
-            //load Modules(special app)
             require_once MODULESPATH.$arr[0].'.php';
         }
         else{

@@ -26,19 +26,15 @@ function config_item($item) {
  * @param strin $controller controller file name
  * @param string $app app folder name
  */
-function load_app_controller($controller,$app="") {
-    if(!$app){
-        if (file_exists(APPPATH . "controllers/$controller.php")) {
-            require_once APPPATH . "controllers/$controller.php";
-        }
-        else{
-            die('file not exist: ' . APPPATH . "controllers/$controller.php");
-        }
+function load_app_controller($controller,$app) {
+    if (file_exists(PROJECTSPATH. "$app/controllers/$controller.php")) {
+        require_once PROJECTSPATH. "$app/controllers/$controller.php";
     }
-    else if (file_exists(MODULESPATH. "$app/controllers/$controller.php")) {
-        require_once MODULESPATH. "$app/controllers/$controller.php";
-    } else {
-        die('file not exist: ' . MODULESPATH . "$app/controllers/$controller.php");
+    else if (file_exists(MODULESPATH . "$app/controllers/$controller.php")) {
+        require_once MODULESPATH . "$app/controllers/$controller.php";
+    }
+    else {
+        die('file not exist: ' . PROJECTSPATH . "$app/controllers/$controller.php");
     }
 }
 
@@ -48,23 +44,18 @@ function load_app_controller($controller,$app="") {
  * @param string $model model file name
  * @param string $app app folder name
  */
-function load_app_model($model,$app="") {
-    if (!$app) {
-        if(file_exists(APPPATH . "models/$model.php")){
-            require_once APPPATH . "models/$model.php";
-        }
-        else if (file_exists(SYSTEMPATH . "models/$model.php")) {
-            require_once SYSTEMPATH . "models/$model.php";
-        }
-        else{
-            die('file not exist: ' .APPPATH. "$app/models/$model.php");
-        }
+function load_app_model($model,$app) {
+    if (file_exists(PROJECTSPATH. "$app/models/$model.php")) {
+        require_once PROJECTSPATH. "$app/models/$model.php";
     }
-    else if (file_exists(MODULESPATH. "$app/models/$model.php")) {
-        require_once MODULESPATH. "$app/models/$model.php";
+    else if(file_exists(MODULESPATH . "$app/models/$model.php")){
+        require_once MODULESPATH . "$app/models/$model.php";
+    }
+    else if (file_exists(SYSTEMPATH . "models/$model.php")) {
+        require_once SYSTEMPATH . "models/$model.php";
     }
     else {
-        die('file not exist: ' .MODULESPATH. "$app/models/$model.php");
+        die('file not exist: ' .PROJECTSPATH. "$app/models/$model.php");
     }
 }
 
@@ -73,20 +64,18 @@ function load_app_model($model,$app="") {
  * @param type $library
  * @param type $app
  */
-function load_app_library($library,$app='')
+function load_app_library($library,$app)
 {
-    if(!$app)
-    {
-        if (file_exists(APPPATH . "libraries/$library.php")) {
-            require_once APPPATH . "libraries/$library.php";
-        } else {
-            die('file not exist: ' .APPPATH. "libraries/$library.php");
-        }
+    if (file_exists(PROJECTSPATH . "$app/libraries/$library.php")) {
+        require_once PROJECTSPATH . "$app/libraries/$library.php";
     }
-    else if (file_exists(APPPATH . "$app/libraries/$library.php")) {
-        require_once APPPATH . "$app/libraries/$library.php";
+    else if (file_exists(MODULESPATH . "$app/libraries/$library.php")) {
+        require_once MODULESPATH . "$app/libraries/$library.php";
+    }
+    else if (file_exists(SYSTEMPATH . "libraries/$library.php")) {
+        require_once SYSTEMPATH . "libraries/$library.php";
     } else {
-        die('file not exist: ' .APPPATH. "$app/libraries/$library.php");
+        die('file not exist: ' .PROJECTSPATH. "$app/libraries/$library.php");
     }
 }
 
