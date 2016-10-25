@@ -1,0 +1,3 @@
+[submodule "core/databases/active-record"]
+	path = core/databases/active-record
+	url = https://github.com/ashrafimanesh/php-active-record
