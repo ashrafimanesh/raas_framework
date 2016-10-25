@@ -5,8 +5,9 @@ class Router{
         if($route!=ROUTE){
             return;
         }
+        global $Request;
         if(is_callable($controller)){
-            return $controller();
+            return $controller($Request);
         }
         
         $arr=  explode('@', $controller);
@@ -28,7 +29,6 @@ class Router{
         if(!method_exists($obj, $method_name)){
             die('method not exist on '.$class);
         }
-        global $Request;
         return $obj->$method_name($Request);
     }
 }
